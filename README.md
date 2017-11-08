@@ -1,2 +1,2 @@
-# linuxcpp
-A repository for Linux C++ programming
+# linux
+A repository for Linux programming
