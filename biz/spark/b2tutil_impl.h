@@ -15,13 +15,13 @@ std::vector<Bmp_file>& bmp_file_vector();
 /**
  * Returns the unicode in integer that is encoded in
  * the filename if it follows the naming rule:
- * - stem "^[Uu][-_][:xdigit:]{4,5}$"
+ * - stem "^[Uu][-_][:xdigit:]{4}$"
  * - .ext "\.[Bb][Mm][Pp]"
  * Returns 0 if the filename does not follow the rule or
- * [:xdigit:]{4,5} is not in a valid range of Unicode 10.0.0.
+ * [:xdigit:]{4} is not in a valid range of Unicode 10.0.0.
  *
  * The b2tutil supports unicode characters in the range
- *      from U-00001 to U-1FFFF.
+ *      from U-0001 to U-FFFF.
  *
  * Note that U-00000 is not supported as it is used to
  * indicate 'invalid code point'.
@@ -35,5 +35,10 @@ std::vector<Bmp_file>& bmp_file_vector();
  */
 int codepoint_of_bmp_filename(const fs::path&);
 
+/**
+ * Returns true if the argument 'codepoint' is in the range of
+ * valid unicode defined by JIS.
+ */
+bool valid_unicode(int);
 
 #endif
