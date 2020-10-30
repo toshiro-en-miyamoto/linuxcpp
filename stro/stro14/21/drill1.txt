@@ -1,5 +1,0 @@
-(bose , 2 , 300.00)
-(eizo , 4 , 500.0)
-(logicool , 3 , 80)
-(macmini , 1 , 1000)
-(iphone , 5 , 400)

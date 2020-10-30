@@ -1,2 +1,2 @@
-# linux
-A repository for Linux programming
+# C++
+A repository for C++ programming
