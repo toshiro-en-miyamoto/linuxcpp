@@ -70,16 +70,27 @@ const double max3 = 1.4*square(var);
 ```
 A constexpr function can be used for non-constant arguments, but when that is done the result is not a constant expression. We allow a constexpr function to be called with non-constant-expression arguments in contexts that do not require constant expressions. That way, we don’t have to define essentially the same function twice: once for constant expressions and once for variables.
 
-To be constexpr, a function must be rather simple and cannot have side effects and can only use information passed to it as arguments. In particular, it cannot modify non-local variables, but it can have loops and use its own local variables. For example:
+## References
+C++ also offers a simpler for-statement, called a range-for-statement, for loops that traverse a sequence in the simplest way:
 ```C++
-constexpr double nth(double x, int n)   // assume 0<=n
-{
-    double res = 1;
-    int i = 0;
-    while (i<n) {
-         res*=x;
-         ++i;
-    }
-    return res;
-}
+int v[] = {0,1,2,3,4,5,6,7,8,9};
+constexpr size_t size = sizeof v/sizeof(int);
+
+for (auto i=0; i!=size; i++)
+    v[i]++;        // v's elements are incremented
+
+for (auto x : v)   // copy an element in x
+    x++;           // v's elements are not changed
+
+for (auto& x : v)  // x refers to an element
+    x++;           // v's elements are incremented
+```
+The for-statement can be read as “set i to zero; while i is not the number of elements in the array v, increment the value of the ith element, and increment i.”
+The first range-for-statement can be read as “for every element of v, from the first to the last, place a copy in x, and increment x.”
+If we didn’t want to copy the values from v into the variable x, but rather just have x refer to an element, we could write as the second range-for-statement.
+
+Prefer the {}-initializer syntax for declarations with a named type; [CG: ES.23].
+```C++
+int x {f(99)};
+int& r {x};    // bind r to x (r refers to x)
 ```
