@@ -2,7 +2,7 @@
 
 module;
 export module Vector;
-import <stdexcept>;
+#include <stdexcept>
 #include <cassert>
 
 export class Vector {
