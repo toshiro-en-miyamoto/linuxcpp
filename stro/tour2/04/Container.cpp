@@ -1,5 +1,4 @@
 #include "Container.hpp"
-#include <cassert>
 
 double accum(Container& c) {
     const size_t sz = c.size();
