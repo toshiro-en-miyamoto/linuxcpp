@@ -31,7 +31,7 @@ Don’t believe that all error codes or all exceptions are bad; there are clear 
 
 RAII (§4.2.2, §5.3) is essential for simple and efficient error-handling using exceptions. Code littered with try-blocks often simply reflects the worst aspects of error-handling strategies conceived for error codes.
 
-If the condition of an ```assert()``` fails in “debug mode,” the program terminates. If we are not in debug mode, the assert() is not checked.
+If the condition of an `assert()` fails in “debug mode,” the program terminates. If we are not in debug mode, the assert() is not checked.
 
-The ```static_assert``` mechanism can be used for anything that can be expressed in terms of constant expressions (§1.6).
+The `static_assert` mechanism can be used for anything that can be expressed in terms of constant expressions (§1.6).
 The most important uses of static_assert come when we make assertions about types used as parameters in generic programming

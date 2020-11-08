@@ -20,7 +20,7 @@ private:
 Basically, the Vector object is a “handle” containing a pointer to the elements (elem) and the number of elements (sz).
 This is the basic technique for handling varying amounts of information in C++: a fixed-size handle referring to a variable amount of data “elsewhere” (e.g., on the free store allocated by new; §4.2.2).
 
-There is no fundamental difference between a struct and a class; a ```struct``` is simply a class with members public by default. For example, you can define constructors and other member functions for a struct.
+There is no fundamental difference between a struct and a class; a `struct` is simply a class with members public by default. For example, you can define constructors and other member functions for a struct.
 
 ## Unions
 The standard library type, variant, can be used to eliminate most direct uses of unions. A variant stores a value of one of a set of alternative types (§13.5.1).

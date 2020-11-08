@@ -16,7 +16,7 @@ public:
 };
 ```
 
-The ```const``` specifiers on the functions returning the real and imaginary parts indicate that these functions do not modify the object for which they are called.
+The `const` specifiers on the functions returning the real and imaginary parts indicate that these functions do not modify the object for which they are called.
 
 Many useful operations do not require direct access to the representation of complex, so they can be defined separately from the class definition:
 ```C++
@@ -26,7 +26,7 @@ complex operator+(complex a, complex b) { return a+=b; }
 Here, I use the fact that an argument passed by value is copied so that I can modify an argument without affecting the caller’s copy and use the result as the return value.
 
 ## Initializing Containers
-The ```std::initializer_list``` used to define the initializer-list constructor is a standard-library type known to the compiler: when we use a {}-list, such as {1,2,3,4}, the compiler will create an object of type initializer_list to give to the program.
+The `std::initializer_list` used to define the initializer-list constructor is a standard-library type known to the compiler: when we use a {}-list, such as {1,2,3,4}, the compiler will create an object of type initializer_list to give to the program.
 
 ```c++
 #include <algorithm>
@@ -55,7 +55,7 @@ int main() {
 }
 ```
 
-Unfortunately, the standard-library uses unsigned integers (```size_t, aka 'unsigned long'```) for sizes and subscripts.
+Unfortunately, the standard-library uses unsigned integers (`size_t, aka 'unsigned long'`) for sizes and subscripts.
 
 ## Abstract Types
 Types such as complex and Vector are called *concrete types* because their representation is part of their definition. In that, they resemble built-in types.
@@ -79,8 +79,8 @@ double accum(Container& c) {
 }
 ```
 
-The word ```virtual``` means “may be redefined later in a class derived from this one.”
-Unsurprisingly, a function declared virtual is called a *virtual function*. A class derived from Container provides an implementation for the Container interface. The curious ```=0``` syntax says the function is *pure virtual*; that is, some class derived from Container must define the function.
+The word `virtual` means “may be redefined later in a class derived from this one.”
+Unsurprisingly, a function declared virtual is called a *virtual function*. A class derived from Container provides an implementation for the Container interface. The curious `=0` syntax says the function is *pure virtual*; that is, some class derived from Container must define the function.
 
 As is common for abstract classes, Container does not have a constructor. On the other hand, Container does have a destructor and that destructor is virtual, so that classes derived from Container can provide implementations.
 
@@ -96,9 +96,9 @@ public:
 };
 ```
 
-The members ```operator[]()``` and ```size()``` are said to override the corresponding members in the base class Container. I used the explicit ```override``` to make clear what’s intended. The use of override is optional, but being explicit allows the compiler to catch mistakes, such as misspellings of function names or slight differences between the type of a virtual function and its intended overrider.
+The members `operator[]()` and `size()` are said to override the corresponding members in the base class Container. I used the explicit `override` to make clear what’s intended. The use of override is optional, but being explicit allows the compiler to catch mistakes, such as misspellings of function names or slight differences between the type of a virtual function and its intended overrider.
 
-The destructor (```~Vector_container()```) overrides the base class destructor (```~Container()```). Note that the member destructor (```~Vector()```) is implicitly invoked by its class’s destructor (~Vector_container()).
+The destructor (`~Vector_container()`) overrides the base class destructor (`~Container()`). Note that the member destructor (`~Vector()`) is implicitly invoked by its class’s destructor (~Vector_container()).
 
 ## Class Hierarchy
 
@@ -123,7 +123,7 @@ dynamic_cast < new-type > ( expression )
 <dd>lvalue (until C++11) glvalue (since C++11) of a complete class type if new-type is a reference, prvalue of a pointer to complete class type if new-type is a pointer</dd>
 </dl>
 
-If the cast is successful, dynamic_cast returns a value of type new-type. If the cast fails and new-type is a pointer type, it returns a null pointer of that type. If the cast fails and new-type is a reference type, it throws an exception that matches a handler of type ```std::bad_cast```.
+If the cast is successful, dynamic_cast returns a value of type new-type. If the cast fails and new-type is a pointer type, it returns a null pointer of that type. If the cast fails and new-type is a reference type, it throws an exception that matches a handler of type `std::bad_cast`.
 
 ```c++
 struct Base {
