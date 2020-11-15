@@ -1,4 +1,5 @@
 #include "Vector.hpp"
+#include <cassert>
 #include <stdexcept>
 #include <utility>
 
