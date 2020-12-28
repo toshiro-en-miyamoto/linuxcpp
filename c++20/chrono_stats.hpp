@@ -38,9 +38,9 @@ struct chrono_stats_t
 {
     using type_name = T;
     static const int iteration = i;
-    T min;
-    T avg;
-    T max;
+    typename T::rep min;
+    typename T::rep avg;
+    typename T::rep max;
 };
 
 template<typename T, int iteration = 1'000>
@@ -53,7 +53,7 @@ inline chrono_stats_t<T, iteration> chrono_stats_of(void (fp)())
         auto t1_start = high_resolution_clock::now();
         fp();
         auto t1_end = high_resolution_clock::now();
-        d = duration_cast<milliseconds>(t1_end - t1_start).count();
+        d = duration_cast<T>(t1_end - t1_start).count();
     }
     return {std::ranges::min(durations),
             range_accumulate(durations)/iteration,
