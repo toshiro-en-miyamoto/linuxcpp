@@ -43,15 +43,17 @@ struct chrono_stats_t
     typename T::rep max;
 };
 
+#include <functional>
+
 template<typename T, int iteration = 1'000>
-inline chrono_stats_t<T, iteration> chrono_stats_of(void (fp)())
+inline chrono_stats_t<T, iteration> chrono_stats_of(std::function<void()> f)
 {
     using namespace std::chrono;
     std::vector<typename T::rep> durations(iteration);
     for (auto& d : durations)
     {
         auto t1_start = high_resolution_clock::now();
-        fp();
+        f();
         auto t1_end = high_resolution_clock::now();
         d = duration_cast<T>(t1_end - t1_start).count();
     }
@@ -59,8 +61,3 @@ inline chrono_stats_t<T, iteration> chrono_stats_of(void (fp)())
             range_accumulate(durations)/iteration,
             std::ranges::max(durations)};
 }
-
-
-
-
-
